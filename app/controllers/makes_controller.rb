@@ -1,5 +1,5 @@
 class MakesController < ApplicationController
-  before_action :set_make, only: %i[show]
+  before_action :set_make, only: %i[show destroy]
 
   def index
     @makes = Make.all
@@ -20,6 +20,11 @@ class MakesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @make.destroy
+    redirect_to makes_url, notice: "Make was successfully destroyed."
   end
 
   private
