@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :cars
   resources :dealerships
+  resources :makes, only: %i[index new show create]
 end

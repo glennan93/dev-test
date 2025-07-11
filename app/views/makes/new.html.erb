@@ -1,0 +1,8 @@
+<turbo-frame id="make_form">
+  <% flash.each do |key, message| %>
+    <div class="flash <%= key %>"><%= message %></div>
+  <% end %>
+  <h1>New Make</h1>
+  <%= render 'form', make: @make %>
+</turbo-frame>
+<%= link_to 'Back', makes_path %>
