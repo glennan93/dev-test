@@ -1,0 +1,8 @@
+<turbo-frame id="model_form">
+  <% flash.each do |key, message| %>
+    <div class="flash <%= key %>"><%= message %></div>
+  <% end %>
+  <h1>New Model</h1>
+  <%= render 'form', model: @model %>
+</turbo-frame>
+<%= link_to 'Back', models_path %>

@@ -1,0 +1,26 @@
+<%= form_with(model: model, local: true) do |f| %>
+  <% if model.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(model.errors.count, "error") %> prohibited this model from being saved:</h2>
+      <ul>
+        <% model.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :make_id, "Make" %>
+    <%= f.collection_select :make_id, Make.all, :id, :name, prompt: "Select Make" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create Model" %>
+  </div>
+<% end %>
