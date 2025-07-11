@@ -14,8 +14,14 @@
     <%= form.number_field :year %>
   </div>
   <div>
-    <%= form.label :make %>
-    <%= form.text_field :make %>
+    <%= form.label :make_id, "Make" %>
+    <%= form.collection_select(
+            :make_id,
+            Make.all,
+            :id,
+            :name,
+            prompt: "Select a Make"
+          ) %>
   </div>
   <div>
     <%= form.label :model %>
