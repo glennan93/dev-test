@@ -19,10 +19,13 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-
+# Configure database.yml to read PG_HOST and PG_PORT from ENV
 development:
   <<: *default
   database: dev_test_development
+  host: <%= ENV.fetch("PG_HOST") %>
+  port: <%= ENV.fetch("PG_PORT") %>
+
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -31,7 +34,7 @@ development:
   #username: dev_test
 
   # The password associated with the PostgreSQL role (username).
-  #password:
+  password: <%= ENV.fetch("PG_HOST_PASSWORD") %>
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -57,7 +60,9 @@ development:
 test:
   <<: *default
   database: dev_test_test
-
+  host: <%= ENV.fetch("PG_HOST") %>
+  port: <%= ENV.fetch("PG_PORT") %>
+  password: <%= ENV.fetch("PG_HOST_PASSWORD") %>
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
