@@ -52,6 +52,9 @@ group :development, :test do
 
   # RSpec for testing
   gem "rspec-rails"
+
+  # dotenv for environment variable management and user secrets
+  gem "dotenv-rails"
 end
 
 group :development do
