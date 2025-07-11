@@ -14,7 +14,8 @@
         <td><%= dealership.oem %></td>
         <td><%= link_to 'Show', dealership %></td>
         <td><%= link_to 'Edit', edit_dealership_path(dealership) %></td>
-        <td><%= link_to 'Destroy', dealership, method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %></td>       </tr>
+        <td><%= link_to 'Destroy', dealership, method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>
