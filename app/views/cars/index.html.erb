@@ -14,7 +14,7 @@
   <tbody>
     <% @cars.each do |car| %>
       <tr>
-        <td><%= car.year %></td>
+        <td><%= car.year.year %></td>
         <td><%= car.make.name if car.make %></td>
         <td><%= car.model.name if car.model %></td>
         <td><%= car.trim %></td>

@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   resources :dealerships
   resources :makes, only: %i[index new show create destroy]
   resources :models, only: %i[index new show create destroy]
+  resources :years, only: %i[index new show create destroy]
 end

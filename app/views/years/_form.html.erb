@@ -1,0 +1,31 @@
+<%= form_with(model: year, local: true) do |f| %>
+  <% if year.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(year.errors.count, "error") %> prohibited this year from being saved:</h2>
+      <ul>
+        <% year.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :make_id, "Make" %>
+    <%= f.collection_select :make_id, Make.all, :id, :name, prompt: "Select Make" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :model_id, "Model" %>
+    <%= f.collection_select :model_id, Model.all, :id, :name, prompt: "Select Model" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :year %>
+    <%= f.text_field :year %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create Year" %>
+  </div>
+<% end %>
