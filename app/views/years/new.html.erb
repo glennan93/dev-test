@@ -1,0 +1,8 @@
+<turbo-frame id="year_form">
+  <% flash.each do |key, message| %>
+    <div class="flash <%= key %>"><%= message %></div>
+  <% end %>
+  <h1>New Year</h1>
+  <%= render 'form', year: @year %>
+</turbo-frame>
+<%= link_to 'Back', years_path %>

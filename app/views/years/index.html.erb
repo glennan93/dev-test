@@ -1,0 +1,22 @@
+<h1>Years</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Year</th>
+      <th>Make</th>
+      <th>Model</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @years.each do |year| %>
+      <tr>
+        <td><%= year.year %></td>
+        <td><%= year.make.name if year.make %></td>
+        <td><%= year.model.name if year.model %></td>
+        <td><%= link_to 'Destroy', year, method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'New Year', new_year_path %>
