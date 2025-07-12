@@ -11,9 +11,15 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  # Main resources and application routes
   resources :cars
   resources :dealerships
   resources :makes, only: %i[index new show create destroy]
-  resources :models, only: %i[index new show create destroy]
+  resources :models, only: %i[index new show create destroy] do 
+    collection do
+      get :for_make
+    end
+  end
   resources :years, only: %i[index new show create destroy]
 end

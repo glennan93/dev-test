@@ -1,4 +1,4 @@
-<%= form_with(model: car, local: true) do |form| %>
+<%= form_with(model: car, local: true, html: { data: { controller: "car-form" } }) do |form| %>
   <% if car.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(car.errors.count, "error") %> prohibited this car from being saved:</h2>
@@ -20,12 +20,20 @@
             Make.all,
             :id,
             :name,
-            prompt: "Select a Make"
+            { prompt: "Select a Make" },
+            { id: "car_make_id", data: { car_form_target: "make", action: "change->car-form#makeChanged" } }, # This sets the HTML id attribute
           ) %>
   </div>
   <div>
     <%= form.label :model %>
-    <%= form.text_field :model %>
+    <%= form.collection_select(
+            :model_id,
+            Model.all,
+            :id,
+            :name,
+            { prompt: "Select a Model" },
+            { id: "car_model_id", data: { car_form_target: "model" } } # This sets the HTML id attribute
+            ) %>
   </div>
   <div>
     <%= form.label :trim %>

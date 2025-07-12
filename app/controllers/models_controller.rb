@@ -27,6 +27,11 @@ class ModelsController < ApplicationController
     redirect_to models_url, notice: "Model was successfully destroyed."
   end
 
+  def for_make
+    @models = Model.where(make_id: params[:make_id])
+    render json: @models
+  end
+  
   private
 
   def set_model
