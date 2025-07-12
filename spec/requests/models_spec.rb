@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "Models", type: :request do
   let(:bmw) { Make.create!(name: "BMW") }
+  let!(:audi) { Make.create!(name: "Audi") }
+  let!(:series_3) { Model.create!(name: "3 Series", make: bmw) }
+  let!(:s3) { Model.create!(name: "S3", make: audi) }
 
   describe "POST /models" do
     #  Scenario: Creating a Successful Model
@@ -14,7 +17,7 @@ RSpec.describe "Models", type: :request do
     context "with valid params" do
       it "creates a new Model and redirects" do
         expect {
-          post models_path, params: { model: { name: "3 Series", make_id: bmw.id } }
+          post models_path, params: { model: { name: "5 Series", make_id: bmw.id } }
         }.to change(Model, :count).by(1)
         expect(response).to redirect_to(new_model_path)
         follow_redirect!
@@ -36,6 +39,27 @@ RSpec.describe "Models", type: :request do
         }.not_to change(Model, :count)
         expect(response.body).to match(/Name can('|&#39;)t be blank/)
       end
+    end
+  end
+
+  describe "GET /models/for_make" do
+    # Scenario: Car records reference only valid combinations - Make/Model
+    #   Given I am creating a new Car
+    #   Given Make "BMW" exists
+    #   Given Make "Audi" exists
+    #   Given Model "3 Series" exists for "BMW" Make
+    #   Given Model "S3" exists for "Audi" Make
+    #   And I selected "BMW" from "Make"
+    #   Then I should see "3 Series" Model options
+    #   Then I should not see "S3" Model options
+
+    it "returns only models for the selected make" do 
+      get for_make_models_path, params: { make_id: bmw.id }
+      expect(response).to have_http_status(:success)
+      json = JSON.parse(response.body)
+      model_names = json.map { |model| model["name"]}
+      expect(model_names).to include("3 Series")
+      expect(model_names).not_to include("S3")
     end
   end
 end
