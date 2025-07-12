@@ -2,7 +2,15 @@ require 'rails_helper'
 
 RSpec.describe "Models", type: :request do
   let(:bmw) { Make.create!(name: "BMW") }
+
   describe "POST /models" do
+    #  Scenario: Creating a Successful Model
+    #   Given I am creating a new Model
+    #   Given Make "BMW" exists
+    #   When I select "BMW" from the "Make" field
+    #   When I enter "3 Series" into the "Name" field
+    #   When I click "Submit"
+    #   Then a new Model record should be created with a name of "3 Series" associated with "BMW" Make
     context "with valid params" do
       it "creates a new Model and redirects" do
         expect {
@@ -14,6 +22,13 @@ RSpec.describe "Models", type: :request do
       end
     end
 
+    # Scenario: Creating an Unsuccessful Model
+    #   Given I am creating a new Model
+    #   Given Make "BMW" exists
+    #   When I select "BMW" from the "Make" field
+    #   When I click "Submit"
+    #   Then I should see an error message stating "Name can’t be blank"
+    #   Then a new Model record should not be created
     context "with invalid params" do
       it "does not create a new Model and re-renders the form with errors" do
         expect {
