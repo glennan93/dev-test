@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DealershipsController < ApplicationController
   before_action :set_dealership, only: %i[show edit update destroy]
 
@@ -5,20 +7,18 @@ class DealershipsController < ApplicationController
     @dealerships = Dealership.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @dealership = Dealership.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @dealership = Dealership.new(dealership_params)
     if @dealership.save
-      redirect_to @dealership, notice: "Dealership was successfully created."
+      redirect_to @dealership, notice: 'Dealership was successfully created.'
     else
       render :new
     end
@@ -26,7 +26,7 @@ class DealershipsController < ApplicationController
 
   def update
     if @dealership.update(dealership_params)
-      redirect_to @dealership, notice: "Dealership was successfully updated."
+      redirect_to @dealership, notice: 'Dealership was successfully updated.'
     else
       render :edit
     end
@@ -34,7 +34,7 @@ class DealershipsController < ApplicationController
 
   def destroy
     @dealership.destroy
-    redirect_to dealerships_url, notice: "Dealership was successfully destroyed."
+    redirect_to dealerships_url, notice: 'Dealership was successfully destroyed.'
   end
 
   private

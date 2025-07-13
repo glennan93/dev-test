@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ModelsController < ApplicationController
   before_action :set_model, only: %i[show edit update destroy]
 
@@ -5,15 +7,13 @@ class ModelsController < ApplicationController
     @models = Model.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @model = Model.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def show
     # @model is already set by the before_action
@@ -22,7 +22,7 @@ class ModelsController < ApplicationController
   def create
     @model = Model.new(model_params)
     if @model.save
-      redirect_to new_model_path, notice: "Model was successfully created."
+      redirect_to new_model_path, notice: 'Model was successfully created.'
     else
       render :new
     end
@@ -30,7 +30,7 @@ class ModelsController < ApplicationController
 
   def update
     if @model.update(model_params)
-      redirect_to models_url, notice: "Model was successfully updated."
+      redirect_to models_url, notice: 'Model was successfully updated.'
     else
       render :edit
     end
@@ -38,14 +38,14 @@ class ModelsController < ApplicationController
 
   def destroy
     @model.destroy
-    redirect_to models_url, notice: "Model was successfully destroyed."
+    redirect_to models_url, notice: 'Model was successfully destroyed.'
   end
 
   def for_make
     @models = Model.where(make_id: params[:make_id])
     render json: @models
   end
-  
+
   private
 
   def set_model
