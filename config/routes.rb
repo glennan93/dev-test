@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :cars
   resources :dealerships
   resources :makes, only: %i[index new show create destroy edit update]
-  resources :models, only: %i[index new show create destroy] do 
+  resources :models, only: %i[index new show create destroy edit update] do 
     collection do
       get :for_make
     end

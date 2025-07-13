@@ -1,12 +1,18 @@
 class ModelsController < ApplicationController
-  before_action :set_model, only: %i[show destroy]
+  before_action :set_model, only: %i[show edit update destroy]
 
   def index
     @models = Model.all
   end
 
+  def show
+  end
+
   def new
     @model = Model.new
+  end
+
+  def edit
   end
 
   def show
@@ -19,6 +25,14 @@ class ModelsController < ApplicationController
       redirect_to new_model_path, notice: "Model was successfully created."
     else
       render :new
+    end
+  end
+
+  def update
+    if @model.update(model_params)
+      redirect_to models_url, notice: "Model was successfully updated."
+    else
+      render :edit
     end
   end
 

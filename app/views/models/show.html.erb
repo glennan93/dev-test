@@ -1,0 +1,7 @@
+<h1>Car Details</h1>
+<p>
+  <strong>Make:</strong> <%= @model.make.name %><br>
+  <strong>Model:</strong> <%= @model.name %><br>
+</p>
+<%= link_to 'Edit', edit_model_path(@model) %> |
+<%= link_to 'Back', models_path %>
