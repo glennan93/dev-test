@@ -10,10 +10,6 @@
     </div>
   <% end %>
   <div>
-    <%= form.label :year %>
-    <%= form.number_field :year %>
-  </div>
-  <div>
     <%= form.label :make_id, "Make" %>
     <%= form.collection_select(
             :make_id,
@@ -21,7 +17,7 @@
             :id,
             :name,
             { prompt: "Select a Make" },
-            { id: "car_make_id", data: { car_form_target: "make", action: "change->car-form#makeChanged" } }, # This sets the HTML id attribute
+            { id: "car_make_id", data: { car_form_target: "make", action: "change->car-form#makeChanged" } }, 
           ) %>
   </div>
   <div>
@@ -32,8 +28,19 @@
             :id,
             :name,
             { prompt: "Select a Model" },
-            { id: "car_model_id", data: { car_form_target: "model" } } # This sets the HTML id attribute
-            ) %>
+            { id: "car_model_id", data: { car_form_target: "model", action: "change->car-form#modelChanged" } } 
+          ) %>
+  </div>
+  <div>
+  <%= form.label :year_id, "Year" %>
+  <%= form.collection_select(
+          :year_id,
+          Year.all,
+          :id,
+          :year,
+          { prompt: "Select a Year" },
+          { id: "car_year_id", data: { car_form_target: "year" } }
+        ) %>
   </div>
   <div>
     <%= form.label :trim %>
