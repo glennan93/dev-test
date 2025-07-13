@@ -31,15 +31,15 @@ RSpec.describe "Years", type: :request do
       end
     end
 
-  # Scenario: Creating an Unsuccessful Year
-  #   Given I am creating a new Year
-  #   Given Make "BMW" exists
-  #   Given Model "3 Series" exists for "BMW" Make
-  #   When I select "BMW" from the "Make" field
-  #   When I click "Submit"
-  #   Then I should see an error message stating "Year can’t be blank"
-  #   Then I should see an error message stating "Model can’t be blank"
-  #   Then a new Model record should not be created
+    # Scenario: Creating an Unsuccessful Year
+    #   Given I am creating a new Year
+    #   Given Make "BMW" exists
+    #   Given Model "3 Series" exists for "BMW" Make
+    #   When I select "BMW" from the "Make" field
+    #   When I click "Submit"
+    #   Then I should see an error message stating "Year can’t be blank"
+    #   Then I should see an error message stating "Model can’t be blank"
+    #   Then a new Model record should not be created
     context "with invalid params" do
       it "does not create a new Year and re-renders the form with errors" do
         # Attempt to create a Year with missing model and year
@@ -48,6 +48,7 @@ RSpec.describe "Years", type: :request do
         }.not_to change(Year, :count)
         # Should show a validation error for missing model
         expect(response.body).to match(/Model can('|&#39;)t be blank/)
+        expect(response.body).to match(/Year can('|&#39;)t be blank/)
       end
     end
   end
