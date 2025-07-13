@@ -29,6 +29,11 @@ class YearsController < ApplicationController
     redirect_to years_url, notice: "Year was successfully destroyed."
   end
 
+  def for_model
+    @years = Year.where(model_id: params[:model_id], make_id: params[:make_id])
+    render json: @years
+  end
+
   private
 
   def set_year
