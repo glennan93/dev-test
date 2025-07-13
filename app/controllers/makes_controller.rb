@@ -1,5 +1,5 @@
 class MakesController < ApplicationController
-  before_action :set_make, only: %i[show destroy]
+  before_action :set_make, only: %i[show edit update destroy]
 
   def index
     @makes = Make.all
@@ -10,7 +10,9 @@ class MakesController < ApplicationController
   end
 
   def show
-    # @make is already set by the before_action
+  end
+  
+  def edit
   end
 
   def create
@@ -19,6 +21,14 @@ class MakesController < ApplicationController
       redirect_to new_make_path, notice: "Make was successfully created."
     else
       render :new
+    end
+  end
+
+  def update
+    if @make.update(make_params)
+      redirect_to makes_url, notice: "Make was successfully updated."
+    else
+      render :edit
     end
   end
 

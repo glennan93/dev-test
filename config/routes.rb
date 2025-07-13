@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   # Main resources and application routes
   resources :cars
   resources :dealerships
-  resources :makes, only: %i[index new show create destroy]
+  resources :makes, only: %i[index new show create destroy edit update]
   resources :models, only: %i[index new show create destroy] do 
     collection do
       get :for_make
