@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CarsController < ApplicationController
   before_action :set_car, only: %i[show edit update destroy]
 
@@ -5,20 +7,18 @@ class CarsController < ApplicationController
     @cars = Car.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @car = Car.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @car = Car.new(car_params)
     if @car.save
-      redirect_to new_car_path, notice: "Car was successfully created."
+      redirect_to new_car_path, notice: 'Car was successfully created.'
     else
       render :new
     end
@@ -26,7 +26,7 @@ class CarsController < ApplicationController
 
   def update
     if @car.update(car_params)
-      redirect_to cars_url, notice: "Car was successfully updated."
+      redirect_to cars_url, notice: 'Car was successfully updated.'
     else
       render :edit
     end
@@ -34,7 +34,7 @@ class CarsController < ApplicationController
 
   def destroy
     @car.destroy
-    redirect_to cars_url, notice: "Car was successfully destroyed."
+    redirect_to cars_url, notice: 'Car was successfully destroyed.'
   end
 
   private

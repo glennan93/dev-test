@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 class Year < ApplicationRecord
   has_many :cars
   belongs_to :make, optional: true
   belongs_to :model, optional: true
-  validates :year, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1886, allow_blank: true }
+  validates :year, presence: true,
+                   numericality: { only_integer: true, greater_than_or_equal_to: 1886, allow_blank: true }
   validates :make, presence: true
   validates :model, presence: true
 end

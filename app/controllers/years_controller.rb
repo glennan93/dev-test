@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class YearsController < ApplicationController
   before_action :set_year, only: %i[show destroy]
 
@@ -18,7 +20,7 @@ class YearsController < ApplicationController
   def create
     @year = Year.new(year_params)
     if @year.save
-      redirect_to new_year_path, notice: "Year was successfully created."
+      redirect_to new_year_path, notice: 'Year was successfully created.'
     else
       render :new
     end
@@ -26,7 +28,7 @@ class YearsController < ApplicationController
 
   def destroy
     @year.destroy
-    redirect_to years_url, notice: "Year was successfully destroyed."
+    redirect_to years_url, notice: 'Year was successfully destroyed.'
   end
 
   def for_model
