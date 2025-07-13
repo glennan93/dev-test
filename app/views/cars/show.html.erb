@@ -1,8 +1,8 @@
 <h1>Car Details</h1>
 <p>
-  <strong>Year:</strong> <%= @car.year %><br>
-  <strong>Make:</strong> <%= @car.make %><br>
-  <strong>Model:</strong> <%= @car.model %><br>
+  <strong>Year:</strong> <%= @car.year.year %><br>
+  <strong>Make:</strong> <%= @car.make.name %><br>
+  <strong>Model:</strong> <%= @car.model.name %><br>
   <strong>Trim:</strong> <%= @car.trim %><br>
   <strong>Count:</strong> <%= @car.count %><br>
   <strong>Dealership:</strong> <%= @car.dealership.name if @car.dealership %>
