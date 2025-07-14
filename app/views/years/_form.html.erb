@@ -1,4 +1,4 @@
-<%= form_with(model: year, local: true) do |f| %>
+<%= form_with(model: year, local: true, html: { data: { controller: "year-form" } }) do |f| %>
   <% if year.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(year.errors.count, "error") %> prohibited this year from being saved:</h2>
@@ -12,20 +12,31 @@
 
   <div class="field">
     <%= f.label :make_id, "Make" %>
-    <%= f.collection_select :make_id, Make.all, :id, :name, prompt: "Select Make" %>
+    <%= f.collection_select :make_id, Make.all, :id, :name, { prompt: "Select Make" },
+    { data: { year_form_target: "make", action: "change->year-form#makeChanged" } } %>
   </div>
 
   <div class="field">
     <%= f.label :model_id, "Model" %>
-    <%= f.collection_select :model_id, Model.all, :id, :name, prompt: "Select Model" %>
+    <%= f.collection_select :model_id,
+    (year.make.present? ? year.make.models : Model.none),
+    :id, :name, { prompt: "Select Model" },
+    { data: { year_form_target: "model", action: "change->year-form#modelChanged" } } %>
   </div>
 
   <div class="field">
-    <%= f.label :year %>
-    <%= f.text_field :year %>
+    <%= f.label :year, "Year" %>
+    <% if year.new_record? %>
+      <%= f.text_field :year, placeholder: "Enter a new year" %>
+    <% else %>
+      <%= f.collection_select :year_id,
+      (year.model.present? ? year.model.years : Year.none),
+      :id, :year, { prompt: "Select a Year" },
+        { data: { year_form_target: "year" } } %>
+    <% end %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Create Year" %>
+    <%= f.submit %>
   </div>
 <% end %>

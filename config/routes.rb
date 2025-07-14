@@ -24,7 +24,7 @@ Rails.application.routes.draw do
       get :for_make
     end
   end
-  resources :years, only: %i[index new show create destroy] do
+  resources :years, only: %i[index new show create destroy edit update] do
     collection do
       get :for_model
     end

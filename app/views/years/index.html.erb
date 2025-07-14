@@ -14,6 +14,8 @@
         <td><%= year.year %></td>
         <td><%= year.make.name if year.make %></td>
         <td><%= year.model.name if year.model %></td>
+        <td><%= link_to 'Show', year %></td>
+        <td><%= link_to 'Edit', edit_year_path(year) %></td>
         <td><%= link_to 'Destroy', year, method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

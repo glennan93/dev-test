@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class YearsController < ApplicationController
-  before_action :set_year, only: %i[show destroy]
+  before_action :set_year, only: %i[show edit update destroy]
 
   def index
     @years = Year.all
@@ -13,9 +13,9 @@ class YearsController < ApplicationController
     @models = Model.all
   end
 
-  def show
-    # @year is already set by the before_action
-  end
+  def show;  end
+
+  def edit; end
 
   def create
     @year = Year.new(year_params)
@@ -23,6 +23,14 @@ class YearsController < ApplicationController
       redirect_to new_year_path, notice: 'Year was successfully created.'
     else
       render :new
+    end
+  end
+
+  def update
+    if @year.update(year_params)
+      redirect_to years_url, notice: 'Year was successfully updated.'
+    else
+      render :edit
     end
   end
 
