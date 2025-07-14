@@ -13,7 +13,8 @@ RSpec.describe 'Years Create', type: :system do
   #     When I select "3 Series" from the "Model" field
   #     When I enter in "2001" in the "Year" field
   #     When I click "Submit"
-  #     Then a new Year record should be created with the year "2001" associated with "3 Series" Model and associated with "BMW" Make
+  #     Then a new Year record should be created with the year "2001"
+  #     associated with "3 Series" Model and associated with "BMW" Make
   it 'creates a new year successfully' do
     visit new_year_path
 

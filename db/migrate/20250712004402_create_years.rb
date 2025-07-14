@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Migration to create the Years table.
 class CreateYears < ActiveRecord::Migration[8.0]
   def change
     create_table :years do |t|

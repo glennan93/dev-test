@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# Controller for managing Make records.
+# Handles listing, showing, creating, editing, updating, and deleting makes in the inventory system.
 class MakesController < ApplicationController
   before_action :set_make, only: %i[show edit update destroy]
 

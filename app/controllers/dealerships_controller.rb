@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# Controller for managing Dealership records.
+# Handles listing, showing, creating, editing, updating, and deleting dealerships in the inventory system.
 class DealershipsController < ApplicationController
   before_action :set_dealership, only: %i[show edit update destroy]
 

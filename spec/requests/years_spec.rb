@@ -18,7 +18,8 @@ RSpec.describe 'Years', type: :request do
   #   When I select "3 Series" from the "Model" field
   #   When I enter in "2001" in the "Year" field
   #   When I click "Submit"
-  #   Then a new Year record should be created with the year "2001" associated with "3 Series" Model and associated with "BMW" Make
+  #   Then a new Year record should be created with the year "2001" associated
+  #   with "3 Series" Model and associated with "BMW" Make
   describe 'POST /years' do
     context 'with valid params' do
       it 'creates a new Year and redirects' do
