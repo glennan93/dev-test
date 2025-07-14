@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# Controller for managing Year records.
+# Handles listing, showing, creating, editing, updating, and deleting years in the inventory system.
+# Also provides a method to fetch years for a specific model and make.
 class YearsController < ApplicationController
   before_action :set_year, only: %i[show edit update destroy]
 
@@ -13,7 +16,7 @@ class YearsController < ApplicationController
     @models = Model.all
   end
 
-  def show;  end
+  def show; end
 
   def edit; end
 

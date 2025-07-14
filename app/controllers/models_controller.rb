@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# Controller for managing Model records.
+# Handles listing, showing, creating, editing, updating, and deleting models in the inventory system.
+# Also provides a method to fetch models for a specific make.
 class ModelsController < ApplicationController
   before_action :set_model, only: %i[show edit update destroy]
 
@@ -14,10 +17,6 @@ class ModelsController < ApplicationController
   end
 
   def edit; end
-
-  def show
-    # @model is already set by the before_action
-  end
 
   def create
     @model = Model.new(model_params)

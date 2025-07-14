@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# Controller for managing Car records.
+# Handles listing, showing, creating, editing, updating, and deleting cars in the inventory system.
+# Also provides methods to fetch cars for a specific year, make, model, and dealership.
 class CarsController < ApplicationController
   before_action :set_car, only: %i[show edit update destroy]
 

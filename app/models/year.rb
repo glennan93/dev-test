@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# Model representing a Year in the inventory system.
+# A Year can have many Cars associated with it, and belongs to a Make and Model.
 class Year < ApplicationRecord
   has_many :cars
   belongs_to :make, optional: true
