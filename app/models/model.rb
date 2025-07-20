@@ -5,5 +5,6 @@
 class Model < ApplicationRecord
   belongs_to :make
   has_many :years
+  has_many :cars
   validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
 end
